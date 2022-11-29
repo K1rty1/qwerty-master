@@ -12,7 +12,7 @@ namespace qwerty.Model
         public string ImagePath { get {
                 if (Image==null)
                 {
-
+                    return "..\\Assets\\Images\\picture.png";
                 }
                 else
                 {
