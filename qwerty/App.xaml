@@ -1,0 +1,11 @@
+﻿<Application x:Class="qwerty.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:qwerty"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <SolidColorBrush Color="#FFFFFF" x:Key="MainColor" />
+        <SolidColorBrush Color="#D3D3D3" x:Key="SecondColor" />
+        <SolidColorBrush Color="#A163F5" x:Key="AccentuationColor" />
+    </Application.Resources>
+</Application>
