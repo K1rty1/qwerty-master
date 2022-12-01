@@ -1,4 +1,5 @@
-﻿using System;
+﻿using qwerty.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace qwerty.View.Page
+namespace qwerty.View.Pages
 {
     /// <summary>
     /// Логика взаимодействия для ProductPage.xaml
     /// </summary>
     public partial class ProductPage : Page
     {
+        Core db = new Core(); 
         public ProductPage()
         {
             InitializeComponent();
+            ProductListView.ItemsSource = db.context.Product.ToList();
+
+
         }
     }
 }

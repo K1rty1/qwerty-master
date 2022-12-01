@@ -9,16 +9,7 @@ namespace qwerty.Model
     public partial class Core
     {
         public TiresCompanyEntities context = new TiresCompanyEntities();
-        public string ImagePath { get {
-                if (Image==null)
-                {
-                    return "..\\Assets\\Images\\picture.png";
-                }
-                else
-                {
-                return ""+Image;
-                }
-
-            } }
+       
+             
     }
 }
