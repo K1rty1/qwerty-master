@@ -29,5 +29,26 @@ namespace qwerty.View.Pages
 
 
         }
+
+        private void AddProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new UpdateProductPage());
+        }
+
+        private void SearchTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (SearchTextBox.Text == "Введите наименование продукта")
+            {
+                SearchTextBox.Text = "";
+            }
+        }
+
+        private void SearchTextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(SearchTextBox.Text))
+            {
+                SearchTextBox.Text = "Введите наименование продукта";
+            }
+        }
     }
 }

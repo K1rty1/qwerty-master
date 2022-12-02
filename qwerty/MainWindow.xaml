@@ -11,6 +11,6 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Image Source="Assets\Images\eight.png" HorizontalAlignment="Left"/>
-        
+        <Frame x:Name="MainFrame"/>
     </Grid>
 </Window>

@@ -28,24 +28,29 @@ namespace qwerty.Model
         {
             get
             {
-                string materials = "";
-                List<string> arrayMaterial = new List<string> { };
-                foreach (var item in collection)
+                string materials = "Материалы";
+                List<string> arrayMaterials = new List<string> { };
+                List<ProductMaterial> arrayActiveProduct = ProductMaterial.Where(x => x.ProductID == ID).ToList();
+                foreach (var item in arrayActiveProduct)
                 {
-
+                    arrayMaterials.Add(item.Material.Title.ToString());
                 }
-                materials = String.Join(",", arrayMaterial);
+                materials = String.Join(",", arrayMaterials);
                 return materials;
             }
 
         }
-        public string CostProduct
+        public double CostProduct
         {
             get
             {
-               
-                string materials = "";
-                return materials;
+                double costProduct = 0;
+                List<ProductMaterial> arrayActiveProduct = ProductMaterial.Where(x => x.ProductID == ID).ToList();
+                foreach (var item in arrayActiveProduct)
+                {
+                    costProduct += Convert.ToDouble(item.Count) * Convert.ToDouble(item.Material.Cost);
+                }
+                return costProduct;
             }
 
         } 

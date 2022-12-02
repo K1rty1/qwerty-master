@@ -64,9 +64,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\Input.cs" />
     <Compile Include="Model\PartialClasses\Product.cs" />
     <Compile Include="View\Pages\ProductPage.xaml.cs">
       <DependentUpon>ProductPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\UpdateProductPage.xaml.cs">
+      <DependentUpon>UpdateProductPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +85,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Pages\ProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\UpdateProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

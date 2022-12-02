@@ -1,5 +1,4 @@
-﻿using qwerty.View.Pages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace qwerty
+namespace qwerty.View.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для UpdateProductPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UpdateProductPage : Page
     {
-        public MainWindow()
+        public UpdateProductPage()
         {
             InitializeComponent();
-            MainFrame.Navigate(new ProductPage());
         }
     }
 }
