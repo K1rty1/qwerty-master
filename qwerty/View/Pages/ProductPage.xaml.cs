@@ -21,13 +21,63 @@ namespace qwerty.View.Pages
     /// </summary>
     public partial class ProductPage : Page
     {
-        Core db = new Core(); 
+        Core db = new Core();
+        List<ProductType> productTypes;
         public ProductPage()
         {
             InitializeComponent();
-            ProductListView.ItemsSource = db.context.Product.ToList();
+            List<string> sortTypeList = new List<string>()
+            {"аименование","остаток на складе","стоймость"
+            };
+            SortComboBox.ItemsSource = sortTypeList;
+            productTypes = new List<ProductType>
+            {
+                new ProductType()
+                { 
+                    ID=0,
+                    Title="Все типы"
+                }
+            };
+            productTypes.AddRange(db.context.ProductType.ToList());
+            FilterComboBox.ItemsSource = productTypes;
+            UpdateUI();
 
 
+
+
+        }
+        private void UpdateUI()
+        {
+            List<Product> displayProduct = GetRows().ToList();
+             ProductListView.ItemsSource =displayProduct;
+        }
+        private List<Product> GetRows()
+        {
+            List<Product> arrayproduct = db.context.Product.ToList();
+            string searchData = SearchTextBox.Text;
+            if (!String.IsNullOrEmpty(SearchTextBox.Text))
+            {
+                arrayproduct = arrayproduct.Where(x => x.Title.ToUpper().Contains(searchData)).ToList();
+            }
+            int filter = Convert.ToInt32(FilterComboBox.SelectedValue);
+            if (FilterComboBox.SelectedIndex == 0)
+            {
+                arrayproduct = arrayproduct.ToList();
+            }
+            else
+            {
+                arrayproduct = arrayproduct.Where(x => x.ProductTypeID==filter).ToList();
+            }
+            int value = SortComboBox.SelectedIndex;
+            if (value==0)
+            {
+                arrayproduct = arrayproduct.OrderBy(p => p.Title).ToList();
+            }
+            else if (value==1)
+            {
+                arrayproduct = arrayproduct.OrderBy(p => p.ProductionWorkshopNumber).ToList();
+            }
+            return arrayproduct;
         }
 
         private void AddProductButton_Click(object sender, RoutedEventArgs e)
@@ -49,6 +99,25 @@ namespace qwerty.View.Pages
             {
                 SearchTextBox.Text = "Введите наименование продукта";
             }
+        }
+
+        private void SearchTextBoxTextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateUI();
+        }
+
+        private void FilterComboBoxSelectionChanged(object sender, RoutedEventArgs e)
+        {
+            UpdateUI();
+        }
+        private void ReverceButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SortComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
